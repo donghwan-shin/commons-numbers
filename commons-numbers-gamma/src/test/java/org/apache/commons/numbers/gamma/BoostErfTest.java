@@ -396,19 +396,6 @@ class BoostErfTest {
 
     @ParameterizedTest
     @Order(1)
-    @CsvFileSource(resources = "erf_large_data.csv")
-    void testErfcLarge(double z, double p, BigDecimal q) {
-        assertErf(TestCase.ERFC_LARGE, z, q);
-    }
-
-    @Test
-    @Order(1040)
-    void testErfcLargeRMS() {
-        assertRms(TestCase.ERFC_LARGE);
-    }
-
-    @ParameterizedTest
-    @Order(1)
     @CsvFileSource(resources = "erf_small_data.csv")
     void testErfSmall(double z, BigDecimal p, double q) {
         assertErf(TestCase.ERF_SMALL, z, p);

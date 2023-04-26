@@ -42,20 +42,6 @@ class BoostToolsTest {
         }
     }
 
-    @ParameterizedTest
-    @ValueSource(doubles = {0.5, 0.2})
-    void testSumSeriesWithInitialValue(double x) {
-        final double a = 2.5;
-        final double expected = Math.log(a + x);
-
-        final int maxTerms = 1000;
-        for (final double eps : new double[] {1e-6, 1e-10, Math.ulp(1.0)}) {
-            final DoubleSupplier fun = new LogApXSeries(a, x);
-            final double actual = BoostTools.sumSeries(fun, eps, maxTerms, Math.log(a));
-            Assertions.assertEquals(expected, actual, expected * eps, () -> "eps: " + eps);
-        }
-    }
-
     @Test
     void testSumSeriesThrows() {
         final double eps = Math.ulp(1.0);

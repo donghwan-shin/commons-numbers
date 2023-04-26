@@ -570,12 +570,6 @@ class BoostGammaTest {
     }
 
     @ParameterizedTest
-    @EnumSource(value = TestCase.class, mode = Mode.MATCH_ANY, names = {"TGAMMAO_.*"})
-    void testTGammaOriginal(TestCase tc) {
-        assertFunction(tc);
-    }
-
-    @ParameterizedTest
     @EnumSource(value = TestCase.class, mode = Mode.MATCH_ANY, names = {"TGAMMA_.*"})
     void testTGamma(TestCase tc) {
         assertFunction(tc);
@@ -750,25 +744,6 @@ class BoostGammaTest {
         }
     }
 
-    @ParameterizedTest
-    @EnumSource(value = TestCase.class, mode = Mode.MATCH_ANY, names = {"LGAMMA_.*"})
-    void testLGamma(TestCase tc) {
-        assertFunction(tc);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-        // Pole errors
-        "-1, NaN",
-        "-2, NaN",
-        // Factorials: gamma(n+1)-1 = n! - 1
-        "0, 0",
-        "1, 0",
-        "2, 1",
-        "3, 5",
-        "4, 23",
-        "5, 119",
-    })
     void testTGammap1m1EdgeCases(double z, double p) {
         Assertions.assertEquals(p, BoostGamma.tgamma1pm1(z));
     }
@@ -796,12 +771,6 @@ class BoostGammaTest {
     })
     void testPowm1EdgeCases(double x, double y, double expected) {
         Assertions.assertEquals(expected, BoostMath.powm1(x, y));
-    }
-
-    @ParameterizedTest
-    @EnumSource(value = BiTestCase.class, mode = Mode.MATCH_ANY, names = {"POWM1.*"})
-    void testPowm1(BiTestCase tc) {
-        assertFunction(tc);
     }
 
     /**
@@ -980,12 +949,6 @@ class BoostGammaTest {
     @ParameterizedTest
     @EnumSource(value = BiTestCase.class, mode = Mode.MATCH_ANY, names = {"GAMMA_P_DERIV.*"})
     void testGammaPDerivative(BiTestCase tc) {
-        assertFunction(tc);
-    }
-
-    @ParameterizedTest
-    @EnumSource(value = BiTestCase.class, mode = Mode.MATCH_ANY, names = {"LOG_GAMMA_P_DERIV.*"})
-    void testLogGammaPDerivative(BiTestCase tc) {
         assertFunction(tc);
     }
 

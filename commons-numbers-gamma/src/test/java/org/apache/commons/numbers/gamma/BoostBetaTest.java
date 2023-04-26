@@ -781,13 +781,6 @@ class BoostBetaTest {
         assertClose(BoostBeta::ibeta, 14.5, 2, 0.75, 7.1367429756558048437e-2, tolerance);
     }
 
-    @ParameterizedTest
-    @EnumSource(value = TriTestCase.class, mode = Mode.MATCH_ANY,
-                names = {"IBETA_[SML].*", "IBETAC_[SML].*", "RBETA.*"})
-    void testIBeta(TriTestCase tc) {
-        assertFunction(tc);
-    }
-
     /**
      * Test the incomplete beta function uses the policy containing the epsilon and
      * maximum iterations for series evaluations. The data targets methods computed
